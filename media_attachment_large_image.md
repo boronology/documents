@@ -113,7 +113,9 @@ const imageData = context.getImageData(0, 0, width, height);
 
 の処理で
 
-> [GFX1-]: Failed to allocate a surface due to invalid size (CDT) Size(14174,10630)
+>
+> ［GFX1-］: Failed to allocate a surface due to invalid size （CDT） Size（14174,10630）
+>
 
 というメッセージがブラウザからエラー出力されているのが見つかった。Sizeを見るとどうやらFirefoxがアップロードされた画像を受け付けていないらしい。
 
