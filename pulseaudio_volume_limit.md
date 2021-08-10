@@ -1,5 +1,9 @@
 # PulseAudioで音量制限をかける
 
+## 更新
+PulseAudio15.0により以下の記事は古くなっている。かわりに[PulseAudio 15.0時代のpath設定置き場](https://boronology.github.io/documents/pulseaudio_config_in_home)を参照のこと。
+
+
 ## 目的
 非常に大きな音が出るスピーカーを実用的な音量の範囲で使いたい。
 そのままの設定では以下のような困ったことがおきる。
