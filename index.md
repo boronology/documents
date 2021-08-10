@@ -14,4 +14,4 @@
 
 （古い情報）[PulseAudioで音量制限をかける](https://boronology.github.io/documents/pulseaudio_volume_limit)
 
-[PulseAudio 15.0時代のpath設定置き場](https://boronology.github.io/documents/pulseaudio_config_in_home)
+[PulseAudio 15.0時代の設定置き場](https://boronology.github.io/documents/pulseaudio_config_in_home)
