@@ -1,4 +1,4 @@
-# PulseAudio 15.0時代のpath設定置き場
+# PulseAudio 15.0時代の設定置き場
 PulseAudio 15.0が2021年7月にリリースされた。このバージョンで便利な機能が入ったので紹介する。
 
 ## 過去の記事と現在の状況
@@ -58,3 +58,6 @@ override-map.2 = all-left,all-right
 ```
 
 のように`volume`パラメータを`volume-limit`に置き換える。
+
+## その他
+今回はpathの設定を扱ったが、 */usr/share/pulseaudio/* 以下にはprofile-setも含まれている。これらも当然ホームディレクトリで管理できるようになる。
