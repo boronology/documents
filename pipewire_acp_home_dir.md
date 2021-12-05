@@ -44,7 +44,7 @@ $ cp /usr/share/alsa-card-profile/alsa-card-profile/mixer/paths/* ~/.config/pipe
 #編集
 $ vim ~/.config/pipewire/alsa-card-profile/mixer/paths/analog-output.conf.common
 
-$ echo "export ACP_PATHS_DIR=~/.config/pipewire/alsa-card-profile/mixer/paths"
+$ echo "export ACP_PATHS_DIR=~/.config/pipewire/alsa-card-profile/mixer/paths" >> ~/.xprofile
 ```
 
 ログインしなおせば環境変数のセットとpipewireの再起動が行われる。
