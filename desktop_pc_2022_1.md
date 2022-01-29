@@ -30,11 +30,11 @@
 
 ||メーカー|商品名|数量|価格|
 |---|---|---|---|---|
-|CPU|Intel|Core i5-12500|1|29381|
-|マザーボード|Asrock|H670 PG Riptide|1|21450|
-|メモリ|Crucial|CT2K32G4DFD832A （DDR4-3200 32GBx2 kit）|2|54552|
-|SSD|Crucial|P5 Plus CT1000P5PSSD8JP （1TB）|1|19939|
-|CPUクーラー|noctua|NH-U12A chromax.black|1|16980|
+|CPU|Intel|[Core i5-12500](https://kakaku.com/item/K0001413993/)|1|29381|
+|マザーボード|Asrock|[H670 PG Riptide](https://kakaku.com/item/K0001414054/)|1|21450|
+|メモリ|Crucial|[CT2K32G4DFD832A （DDR4-3200 32GBx2 kit）](https://kakaku.com/item/K0001259108/)|2|54552|
+|SSD|Crucial|[P5 Plus CT1000P5PSSD8JP （1TB）](https://kakaku.com/item/K0001374156/)|1|19939|
+|CPUクーラー|noctua|[NH-U12A chromax.black](https://kakaku.com/item/K0001209730/)|1|16980|
 
 合計14万ちょっと。
 
@@ -42,7 +42,7 @@
 
 ||メーカー|商品名|コメント|
 |---|---|---|---|
-|電源|Seasonic|PX-650|予備として買い置きしていたセミファンレス電源|
+|電源|Seasonic|[PX-650](https://kakaku.com/item/K0001238307/)|予備として買い置きしていたセミファンレス電源|
 |ケース|Silverstone|RV04|2代前のメインPCで使っていた倒立配置のフルタワーケース|
 
 ## 選定理由
@@ -86,6 +86,9 @@ PCI-Express4.0のNVMeで1TBくらいのものを探す。当初はPlextor PX-1TM
 
 LGA1700対応していれば久々にThermalrightを使おうとも思っていたが、残念ながらまだ対応部品が出ていない。
 
+### 謝辞
+[自作PC 構成見積もり てすと](http://niku.webcrow.jp/)には大変お世話になりました。この場を借りてお礼を申し上げます。
+
 
 ## 後日追加するパーツ
 
@@ -99,7 +102,7 @@ Radeon RX6600XTあたりを追加する。はやく値下がりしてほしい�
 Windows10を買って、将来的に11にアップグレードする。
 
 ## 組む
-![パーツ](img/IMG_20220123_104619958~2.jpg)
+![パーツ](img/IMG_20220123_104619958_2.jpg)
 
 というわけで組む。
 
@@ -142,7 +145,7 @@ ArchInstallBattleする。特に変わったことはやらない。
 ### スワップについて
 メモリがいくら多くてもスワップは必要であるという（参考:[スワップの弁護：よくある誤解を解く](https://chrisdown.name/ja/2018/01/02/in-defence-of-swap.html)）。とはいえ古典的に「スワップはメモリの2倍」と言われてるがメモリ128GBでもそうなのか？SSDの4分の1を占拠する256GBのスワップパーティションが誕生するのか？と思って調べたところ、そうでもないことがわかる。
 
-* [第15章 swap 領域 Red Hat Enterprise Linux 7 | Red Hat Customer Portal](https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-swapspace)
+* [第15章 swap 領域 Red Hat Enterprise Linux 7 Red Hat Customer Portal](https://access.redhat.com/documentation/ja-jp/red_hat_enterprise_linux/7/html/storage_administration_guide/ch-swapspace)
   > |システム内の RAM の容量|推奨されるスワップ領域|ハイバネートを許可する場合に推奨されるスワップ領域|
   > |---|---|---|
   > |>64 GB	|最低 4GB	|ハイバネートは推奨されない|
@@ -161,7 +164,7 @@ mkswap /swap/swapfile
 ```
 
 ### Intel Graphicsについて
-最近のIntel Graphicsを使う場合は`xf86-video-intel`を入れてはいけない。KDE Plasmaでは画面がちらついて操作できなくなった。ついうっかり入れがち（私は`xorg-drivers`で入れてしまった）だし昔は入れて当然だったので結構罠になりそう。
+最近のIntel Graphicsを使う場合は`xf86-video-intel`を入れてはいけない。KDE Plasmaでは画面がちらついて操作できなくなった。ついうっかり入れがちだし（私は`xorg-drivers`で入れてしまった）昔は入れて当然だったので結構罠になりそう。
 
 ## 動作確認
 新しいCPUを試すべくとりあえずカーネルをビルド。Processor familyをAlder lakeにした`linux-zen`を作る。当然ながら`-j12`で6C12Tを全部使う。
