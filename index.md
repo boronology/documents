@@ -20,3 +20,6 @@
 ## nextcloud関連
 
 [ブルートフォース防止に引っかかって締め出された場合](https://boronology.github.io/documents/nextcloud_cancel_bruteforce_detection)
+
+## PC
+[2022年1月デスクトップPC更新](https://boronology.github.io/documents/desktop_pc_2022_1)
