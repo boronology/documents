@@ -186,3 +186,63 @@ mkswap /swap/swapfile
 */etc/makepkg.conf* に */tmp*でビルドするよう指定しているのでビルドを進めるとメモリをもりもり消費する。でも余裕。
 
 40分でビルド完了。
+
+
+## 追記
+使っていると以下のようなUSB関連のトラブルが相次いだ。
+
+* ときどきUSBデバイスの応答が悪くなる
+  * サウンドデバイスなら音にノイズが乗る
+  * マウスが止まる
+* もっと悪くなるとxhci_hcdが固まる
+  * USBが完全に使えなくなる
+  * `rmmod xhci_pci && modprobe xhci_pci` すれば直るものの、しばらくすると再発する
+
+ログの一例を挙げる。
+
+> [152777.937048] xhci_hcd 0000:00:14.0: Frame ID 495 (reg 3968, index 5) beyond range (497, 1391)
+> [152777.937049] xhci_hcd 0000:00:14.0: Ignore frame ID field, use SIA bit instead
+> [152778.094058] xhci_hcd 0000:00:14.0: WARN Event TRB for slot 9 ep 9 with no TDs queued?
+
+> 1月 31 13:50:12 hematite kernel: usb 1-7: reset low-speed USB device number 5 using xhci_hcd
+> 1月 31 13:50:13 hematite kernel: usb 1-7: device not accepting address 5, error -108
+> 1月 31 13:50:13 hematite kernel: usb 1-7: USB disconnect, device number 5
+
+
+埒が明かないため2022年3月にマザーボードを交換した。交換先は[MSI MAG H670 TOMAHAWK WIFI DDR4](https://jp.msi.com/Motherboard/mag-h670-tomahawk-wifi-ddr4)にした。
+
+
+### USBについて
+交換後はこのような問題が一切起きなくなったのでひとまずよしとする。
+
+H670 PG RiptideのオンボードUSBハブはUSBは色々と悪名高いASMedia製チップを使っていたため、根拠のない推測だがこれが原因の可能性を強く疑っている。どちらにしても当面ASRockは買わないことにした。
+
+### MSIのUEFIとGRUB
+マザーボード交換後はUEFIにブートエントリを登録する。
+
+インストールメディアでブートしてマウントと`arch-chroot`したのち以下のコマンドを実行する。
+
+```sh
+grub-install --target=x86_64-efi --target-directory=/boot
+```
+
+これ自体はなんの問題もなく完了するが、再起動するとこのエントリが消滅する。`efibootmgr`で見てみると再起動前には表示されたエントリが再起動後（GRUBに入れないのでインストールメディアが起動するが）は跡形もなく消えている。
+
+これを回避するためには[GRUB - ArchWiki](https://wiki.archlinux.org/title/GRUB#Default/fallback_boot_path)に従って`--removable`をつけて実行し、grubx64.efiの置き場所を変えてやればよい。
+
+```sh
+grub-install --target=x86_64-efi --target-directory=/boot --removable
+```
+
+この問題は一部でよく知られているらしく、[[SOLVED] Efi boot entry disappears after reboot. MSI BIOS E7B05IMS.1A0 / Installation / Arch Linux Forums](https://bbs.archlinux.org/viewtopic.php?id=250928)では
+
+> MSI's are notorious for this 
+
+とまで言われている。
+
+たぶん悪意があってこのような動作にしているわけではなく
+
+* UEFIが\EFI\${ENTRY}\GRUBX64.EFIを見ていない
+* 起動時に有効なエントリが見つからなかったときはエントリをリセットする
+
+の組み合わせでこのような問題が起きているのだろうと思う。
