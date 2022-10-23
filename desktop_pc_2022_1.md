@@ -188,7 +188,7 @@ mkswap /swap/swapfile
 約20分でビルド完了。
 
 
-## 追記
+## 追記1
 使っていると以下のようなUSB関連のトラブルが相次いだ。
 
 * ときどきUSBデバイスの応答が悪くなる
@@ -246,3 +246,44 @@ grub-install --target=x86_64-efi --target-directory=/boot --removable
 * 起動時に有効なエントリが見つからなかったときはエントリをリセットする
 
 の組み合わせでこのような問題が起きているのだろうと思う。
+
+
+## 追記2
+RV04はいいケースなのだが、いかんせん設計が古い。また前面ファンはSilverstone自慢の "Air Penetrator" なのだが、これを動かすと結構うるさい。
+
+そこでケースを変更することにした。条件は以下の通り。
+
+* ATXケース
+* 配置場所を選ばない
+  * RV04はフロントに扉があるため、左側に5cmくらいの空きスペースが必要だった
+* 光学ドライブ用の5インチベイが1つ以上ある
+  * 現行の光学ドライブ延命のため
+* 窒息タイプである
+  * エアフロー確保と静音性のため。
+  * とくにサイドパネルに穴があるものは不可
+  * できればサイドパネルはアクリルではなく鋼板
+* CPUクーラーの高さに余裕がある
+  * NH-U12Aを入れる必要がある
+* 新しめのケース（できれば1年以内）である
+
+### 結果
+特に5インチベイが強い制約になり、結果は [Fractal Design Pop Silent Black Solid](https://www.fractal-design.com/ja/products/cases/pop/pop-silent/black-solid/) となった。
+5インチベイが2つもある（デフォルトでは小物入れになっている）という点で珍しいケースである。背面ファンは使用せず、前面ファンだけを回して前から後ろにストレートに排気するエアフローを目指す。
+
+### 選外
+5インチベイだけを考えれば [COOLER MASTER Elite 500 ODD](https://www.coolermaster.com/jp/ja-jp/catalog/cases/mid-tower/elite-500/) も候補にあがったのだが、窒息の要件やサイドパネルの希望を満たさない。
+
+[Antec P10C](https://www.antec.com/product/case/p10c) は全体的によさそうな構成ではあるが、前面に扉があるため外れる。
+
+## 現在の構成
+
+||メーカー|商品名|コメント|
+|---|---|---|---|
+|CPU|Intel|Core i5-12500||
+|マザーボード|MSI|[MSI MAG H670 TOMAHAWK WIFI DDR4](https://jp.msi.com/Motherboard/mag-h670-tomahawk-wifi-ddr4)||
+|メモリ|Crucial|[CT2K32G4DFD832A （DDR4-3200 32GBx2 kit）](https://www.crucial.jp/memory/ddr4/ct2k32g4dfd832a)|計128GB|
+|SSD|Crucial|[P5 Plus CT1000P5PSSD8JP （1TB）](https://www.crucial.jp/products/ssd/crucial-p5-plus-ssd)||
+|CPUクーラー|noctua|[NH-U12A chromax.black](https://noctua.at/en/nh-u12a-chromax-black)||
+|ケース|Fractal Design|[Fractal Design Pop Silent Black Solid](https://www.fractal-design.com/ja/products/cases/pop/pop-silent/black-solid/)||
+|電源|Seasonic|[PX-650](https://kakaku.com/item/K0001238307/)||
+|光学ドライブ|Prextor|PX-760A|USB-IDE変換経由|
