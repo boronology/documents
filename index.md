@@ -17,6 +17,8 @@
 [PulseAudio 15.0時代の設定置き場](https://boronology.github.io/documents/pulseaudio_config_in_home)
 
 [Pipewire環境でalsa-card-profileをホームディレクトリに置く](https://boronology.github.io/documents/pipewire_acp_home_dir)
+
+[Radeon GPUを仮想マシンにパススルーする](https://boronology.github.io/documents/radeon_gpu_passthrough/index)
 ## nextcloud関連
 
 [ブルートフォース防止に引っかかって締め出された場合](https://boronology.github.io/documents/nextcloud_cancel_bruteforce_detection)
