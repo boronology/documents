@@ -18,10 +18,13 @@
 
 [Pipewire環境でalsa-card-profileをホームディレクトリに置く](https://boronology.github.io/documents/pipewire_acp_home_dir)
 
-[Radeon GPUを仮想マシンにパススルーする](https://boronology.github.io/documents/radeon_gpu_passthrough/index)
+[Radeon GPUを仮想マシンにパススルーする](https://boronology.github.io/documents/radeon_gpu_passthrough)
 ## nextcloud関連
 
 [ブルートフォース防止に引っかかって締め出された場合](https://boronology.github.io/documents/nextcloud_cancel_bruteforce_detection)
 
 ## PC
 [2022年1月デスクトップPC更新](https://boronology.github.io/documents/desktop_pc_2022_1)
+
+## 日記
+[2023年まとめ](https://boronology.github.io/documents/diary_20231231)
