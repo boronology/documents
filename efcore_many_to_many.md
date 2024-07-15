@@ -1,7 +1,7 @@
 # Entity Framework Coreでの多対多の扱い方について
 Entity Framework Core（以下、EFCore）は.NETにおけるMicrosoft製のO/R mapperである。EFCoreは.NETのクラスとして宣言されたエンティティをデータベースのテーブルにマッピングし、別途定義されたナビゲーションにしたがってリレーションを決定する。さらにEFCoreはエンティティとナビゲーションにしたがって.NETのLINQやプロパティアクセスをSQLに変換する。
 
-この記事で扱うのはEFCoreにおける多対多の関連の扱い方である。もっともMicrosoft Learn上には多対多リレーションシップに関するドキュメントがある（[多対多リレーションシップ - EF Core | Microsoft Learn](https://learn.microsoft.com/ja-jp/ef/core/modeling/relationships/many-to-many)）。しかしこのドキュメントはテーブルとリレーションの定義方法について扱っているのみで、実際にCRUDの操作を行う方法についての記述はほとんどない。本記事では具体的な操作方法と要点をまとめる。
+この記事で扱うのはEFCoreにおける多対多の関連の扱い方である。もっともMicrosoft Learn上には多対多リレーションシップに関するドキュメントがある（[多対多リレーションシップ EF Core Microsoft Learn](https://learn.microsoft.com/ja-jp/ef/core/modeling/relationships/many-to-many)）。しかしこのドキュメントはテーブルとリレーションの定義方法について扱っているのみで、実際にCRUDの操作を行う方法についての記述はほとんどない。本記事では具体的な操作方法と要点をまとめる。
 
 ## サンプルプロジェクト
 以下のコードはサンプルプロジェクトからの抜粋である。プロジェクトは以下のURLにアップしている（ [boronology/EfcoreTest: EntityFrameworkCoreの多対多サンプル](https://github.com/boronology/EfcoreTest) ）。
@@ -234,7 +234,7 @@ static void AddToPostTags(Guid postId, IEnumerable<Guid> addTagIds)
 }
 ```
 
-いずれの場合も追加するレコードの数だけ `INSERT` が発行される。 [その他の変更の追跡の機能 - EF Core | Microsoft Learn](https://learn.microsoft.com/ja-jp/ef/core/change-tracking/miscellaneous#addrange-updaterange-attachrange-and-removerange)にあるとおり、 `AddRange()` は `Add()` の複数回呼び出しと同じだからだ。
+いずれの場合も追加するレコードの数だけ `INSERT` が発行される。 [その他の変更の追跡の機能 EF Core Microsoft Learn](https://learn.microsoft.com/ja-jp/ef/core/change-tracking/miscellaneous#addrange-updaterange-attachrange-and-removerange)にあるとおり、 `AddRange()` は `Add()` の複数回呼び出しと同じだからだ。
 
 ### Update
 Updateと括っているが、この節で扱うのは「登録しようとしている `Tag` と `Post` の関連がすでに存在する（するかもしれない）場合」だ。ユースケースとしては以下を考える。
