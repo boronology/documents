@@ -106,11 +106,13 @@ private static async Task GetOneBook()
 ```
 出力は次のとおり。 `context.Books.FirstOrDefaultAsync(...)` なので `DbBook` のデータしか読み込まれていない。そのため `PublisherName` は取得しておらず、 `null` となっている。
 
-> * DBからDbBookを1件取得
-> BookId        :8bedf209-39fe-4bfa-8bec-86cf54925a76
-> Title         :達人プログラマー
-> PublisherId   :10cf6487-563a-4e54-9a88-5eeb55623faa
-> PublisherName :(NULL)
+```
+// DBからDbBookを1件取得
+BookId        :8bedf209-39fe-4bfa-8bec-86cf54925a76
+Title         :達人プログラマー
+PublisherId   :10cf6487-563a-4e54-9a88-5eeb55623faa
+PublisherName :(NULL)
+```
 
 ### PublisherつきでDbBookを1件取得
 関連データを読み込むには `Include()` を使う。コードは以下のようになる。
@@ -128,11 +130,13 @@ private static async Task GetOneBookIncludePublisher()
 
 出力は以下。 `PublisherName` が取得できるようになったことがわかる。
 
-> * DBからPublisherつきでDbBookを1件取得
-> BookId        :8bedf209-39fe-4bfa-8bec-86cf54925a76
-> Title         :達人プログラマー
-> PublisherId   :10cf6487-563a-4e54-9a88-5eeb55623faa
-> PublisherName :オーム社
+```
+// DBからPublisherつきでDbBookを1件取得
+BookId        :8bedf209-39fe-4bfa-8bec-86cf54925a76
+Title         :達人プログラマー
+PublisherId   :10cf6487-563a-4e54-9a88-5eeb55623faa
+PublisherName :オーム社
+```
 
 ### IncludeなしでPublisherNameが取得できる場合
 ここからがEFCoreの追跡の出番となる。まずDBから `DbPublisher` を1件取得する。そのあとContextを閉じないままその `DbPublisher` を関連データとして持つ `DbBook` を取得する。
@@ -151,11 +155,13 @@ private static async Task GetOneBookAfterGetPublisher()
 
 以下の結果のとおり、明示的に `Include()` しなくても関連データとして `Publisher` が読み込まれていることがわかる。
 
-> * DBからまずDbPublisherを取得し、そのあとそのDbPublisherに紐づくDbBookを取得
-> BookId        :8bedf209-39fe-4bfa-8bec-86cf54925a76
-> Title         :達人プログラマー
-> PublisherId   :10cf6487-563a-4e54-9a88-5eeb55623faa
-> PublisherName :オーム社
+```
+// DBからまずDbPublisherを取得し、そのあとそのDbPublisherに紐づくDbBookを取得
+BookId        :8bedf209-39fe-4bfa-8bec-86cf54925a76
+Title         :達人プログラマー
+PublisherId   :10cf6487-563a-4e54-9a88-5eeb55623faa
+PublisherName :オーム社
+```
 
 では他の `DbBook` に対してはどうなるのか？次のコードはDBから1件 `DbPublisher` を取得し、そのあとContextを閉じないまますべての `DbBook` を取得している。
 
@@ -176,19 +182,21 @@ private static async Task GetAllBooksAfterGetOnePublisher()
 
 以下のように事前に取得しておいた `DbPublisher` を関連データとして持つ `DbBook` のみ、 `PublisherName` が読み込まれていることがわかる。EFCoreがデータを追跡し、 `PublisherId` を介して `DbBook` の関連データを自動で埋めているからだ。
 
-> * DBからまずDbPublisherを1件取得し、そのあとそのDbBookをすべて取得
-> BookId        :6b83ccf1-ffe7-4153-9816-cb009e710009
-> Title         :暗号技術のすべて
-> PublisherId   :acb75290-ef7d-44f8-b271-daebe35f62ee
-> PublisherName :(NULL)
-> BookId        :8bedf209-39fe-4bfa-8bec-86cf54925a76
-> Title         :達人プログラマー
-> PublisherId   :10cf6487-563a-4e54-9a88-5eeb55623faa
-> PublisherName :オーム社
-> BookId        :96b1c2fc-1372-4359-a0f1-bdff9c6443f4
-> Title         :正規表現技術入門
-> PublisherId   :c872a122-73f8-4720-8d08-65814dc3ecfc
-> PublisherName :(NULL)
+```
+// DBからまずDbPublisherを1件取得し、そのあとそのDbBookをすべて取得
+BookId        :6b83ccf1-ffe7-4153-9816-cb009e710009
+Title         :暗号技術のすべて
+PublisherId   :acb75290-ef7d-44f8-b271-daebe35f62ee
+PublisherName :(NULL)
+BookId        :8bedf209-39fe-4bfa-8bec-86cf54925a76
+Title         :達人プログラマー
+PublisherId   :10cf6487-563a-4e54-9a88-5eeb55623faa
+PublisherName :オーム社
+BookId        :96b1c2fc-1372-4359-a0f1-bdff9c6443f4
+Title         :正規表現技術入門
+PublisherId   :c872a122-73f8-4720-8d08-65814dc3ecfc
+PublisherName :(NULL)
+```
 
 ### 追跡なしで読み込みたい場合
 追跡は便利なときもあるが、自動で予期せぬプロパティをsetされると困る場合もある。そういった可能性がある場合は `AsNoTracking()` を使って追跡を明示的に無効化する。
@@ -207,11 +215,13 @@ private static async Task GetOneBookWithoutTrackingAfterGetPublisher()
 
 以下のとおり関連データの `Publisher` が取得されなくなったことがわかる。
 
-> * DBからまずDbPublisherを取得し、そのあとそのDbPublisherに紐づくDbBookをAsNoTrackingで取得
-> BookId        :8bedf209-39fe-4bfa-8bec-86cf54925a76
-> Title         :達人プログラマー
-> PublisherId   :10cf6487-563a-4e54-9a88-5eeb55623faa
-> PublisherName :(NULL)
+```
+// DBからまずDbPublisherを取得し、そのあとそのDbPublisherに紐づくDbBookをAsNoTrackingで取得
+BookId        :8bedf209-39fe-4bfa-8bec-86cf54925a76
+Title         :達人プログラマー
+PublisherId   :10cf6487-563a-4e54-9a88-5eeb55623faa
+PublisherName :(NULL)
+```
 
 ### （番外編）Includeはいつ必要なのか
 関連データを読み込む場合は `Include()` を使う。この「読み込む」とは結果として取得することだけを意味する。すなわち絞り込みの条件として使うだけであれば `Include()` は必要ない。
@@ -229,11 +239,13 @@ private static async Task GetOneBookByPublisher()
 }
 ```
 
-> * 番外編 : Publisher.Nameを経由してBookを取得
-> BookId        :6b83ccf1-ffe7-4153-9816-cb009e710009
-> Title         :暗号技術のすべて
-> PublisherId   :acb75290-ef7d-44f8-b271-daebe35f62ee
-> PublisherName :(NULL)
+```
+// 番外編 : Publisher.Nameを経由してBookを取得
+BookId        :6b83ccf1-ffe7-4153-9816-cb009e710009
+Title         :暗号技術のすべて
+PublisherId   :acb75290-ef7d-44f8-b271-daebe35f62ee
+PublisherName :(NULL)
+```
 
 
 ## まとめ
