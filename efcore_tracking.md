@@ -229,6 +229,13 @@ private static async Task GetOneBookByPublisher()
 }
 ```
 
+> * 番外編 : Publisher.Nameを経由してBookを取得
+> BookId        :6b83ccf1-ffe7-4153-9816-cb009e710009
+> Title         :暗号技術のすべて
+> PublisherId   :acb75290-ef7d-44f8-b271-daebe35f62ee
+> PublisherName :(NULL)
+
+
 ## まとめ
 EFCoreは読み込んだデータを自動で追跡する。読み込んだデータとはプログラム上で明示的に取得したレコードのことである。また、追跡は単に変更を検出するだけではなく、主キーをもとに関連データの紐づけを行うことも含む。
 
