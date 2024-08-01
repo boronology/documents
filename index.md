@@ -26,6 +26,8 @@
 ## プログラミング
 [Entity Framework Coreでの多対多の扱い方について](https://boronology.github.io/documents/efcore_many_to_many)
 
+[Entity Framework Coreでの追跡と関連データの読み込みについて](https://boronology.github.io/documents/efcore_tracking)
+
 ## PC
 [2022年1月デスクトップPC更新](https://boronology.github.io/documents/desktop_pc_2022_1)
 
