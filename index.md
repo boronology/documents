@@ -33,3 +33,5 @@
 
 ## 日記
 [2023年まとめ](https://boronology.github.io/documents/diary_20231231)
+
+[2024年ベストバイ](https://boronology.github.io/documents/bestbuy_2024)
