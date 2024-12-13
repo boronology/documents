@@ -31,6 +31,8 @@
 ## PC
 [2022年1月デスクトップPC更新](https://boronology.github.io/documents/desktop_pc_2022_1)
 
+[2024年8月デスクトップPC更新](https://boronology.github.io/documents/desktop_pc_2024_8)
+
 ## 日記
 [2023年まとめ](https://boronology.github.io/documents/diary_20231231)
 
