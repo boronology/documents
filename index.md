@@ -19,6 +19,9 @@
 [Pipewire環境でalsa-card-profileをホームディレクトリに置く](https://boronology.github.io/documents/pipewire_acp_home_dir)
 
 [Radeon GPUを仮想マシンにパススルーする](https://boronology.github.io/documents/radeon_gpu_passthrough)
+
+[ascon AT-08をLinuxで使う](https://boronology.github.io/documents/ascon_at_08)
+
 ## nextcloud関連
 
 [ブルートフォース防止に引っかかって締め出された場合](https://boronology.github.io/documents/nextcloud_cancel_bruteforce_detection)
