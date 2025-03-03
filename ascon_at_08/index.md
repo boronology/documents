@@ -19,7 +19,7 @@
 ![入手した個体のBIOS画面](./img/P_20250222_113542.jpg)
 
 * スペック
-  * [教育用タブレット開発 | 株式会社アスコンはあらゆる販促をサポート](https://www.ascon.co.jp/business/device/tablet/)
+  * [教育用タブレット開発 株式会社アスコンはあらゆる販促をサポート](https://www.ascon.co.jp/business/device/tablet/)
     * AT-08の個別ページはアクセス不可になっている
   * [手書きタブレット型PC アスコンAT-08の発表 - アセンテック](https://www.ascentech.co.jp/news/press/pr210217_01.html)
 * BIOSの差について
@@ -60,7 +60,7 @@ KDE PlasmaではIME（fcitx5）を仮想キーボードとして登録する都�
 ![ibus-kkcとGNOMEのオンスクリーンキーボードで日本語入力をしている画面](./img/Screenshot%20from%202025-03-03%2023-52-47.png)
 
 
-一応仮想キーボード付きのfcitx5もあるにはあるのだが、性能に余裕がないAT-08でビルドするには難がある。
+一応仮想キーボード付きのfcitx5もあるにはあるのだが、性能に余裕がないAT-08でビルドするには難があるためまだ試していない。（[おだら](https://mastodon.hakurei.win/@s3_odara)様、情報提供ありがとうございます。）
 
 * 仮想キーボード付きのFcitx5の開発例
   * [YoctoのWestonをターゲットとしたFcitx5ベースの仮想キーボードの開発 - 2022-12-02 - ククログ](https://www.clear-code.com/blog/2022/12/2/fcitx5-virtualkeyboard-ui.html)
