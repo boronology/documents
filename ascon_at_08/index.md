@@ -81,6 +81,29 @@ KDE PlasmaではIME（fcitx5）を仮想キーボードとして登録する都�
 
 そこで、ログインマネージャが起動したら（この時点ではログインマネージャの表示は乱れている）一度サスペンドさせることで対策をとる。さいわいGDMは電源ボタンでサスペンドできるので、乱れた画面の色からGDMが表示された頃を見計らって電源ボタンを押せばよい。サスペンドしたあと再度電源ボタンを押してレジュームすると、正常な描画でログインマネージャが見えるようになる。
 
+### 自動化
+
+GUIが起動した直後にサスペンドしてレジュームする操作をSystemd unitに登録して自動する。以下の内容ではシステムをスリープさせて一定時間後に再開させるコマンド `rtcwake` を使い、サスペンド（`-m mem`）して1秒後（`-s 1`）に復帰を指定する。
+
+*/etc/systemd/system* に置き、`systemctl enable recover-monitor.service` で有効化する。次回からはGDM起動直後に自動でサスペンドとレジュームするようになる。
+
+```ini
+[Unit]
+Description=suspend and resume to recover AT-08 monitor
+After=display-manager.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/rtcwake -m mem -s 1
+
+[Install]
+WatedBy=graphical.target
+```
+
+以下のGistに用意したのでこちらを使ってくれても構わない。
+
+* [recover-monitor.service](https://gist.github.com/boronology/4a943701a53ba64c04ac6a5df789645d)
+
 ## 使用例
 ![](./img/Screenshot%20From%202025-03-02%2021-16-57.png)
 
