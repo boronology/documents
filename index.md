@@ -10,6 +10,8 @@
 
 [mastodonの検索にkuromojiを導入して日本語検索に対応する](https://boronology.github.io/documents/mastodon_search_kuromoji)
 
+[mastodonの壊れたインデクスを直す](https://boronology.github.io/documents/20251008_fix_mastodon_indices)
+
 ## Linux関連
 
 （古い情報）[PulseAudioで音量制限をかける](https://boronology.github.io/documents/pulseaudio_volume_limit)
