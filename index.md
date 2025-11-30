@@ -24,6 +24,8 @@
 
 [ascon AT-08をLinuxで使う](https://boronology.github.io/documents/ascon_at_08)
 
+[2025-11-30 AMDのGPU RX9060XT x2でvLLMを使う](https://boronology.github.io/documents/20251130_vLLM_ROCm)
+
 ## nextcloud関連
 
 [ブルートフォース防止に引っかかって締め出された場合](https://boronology.github.io/documents/nextcloud_cancel_bruteforce_detection)
