@@ -46,3 +46,5 @@
 [2024年ベストバイ](https://boronology.github.io/documents/bestbuy_2024)
 
 [2024年まとめ](https://boronology.github.io/documents/diary_20241230)
+
+[2025年ベストバイ](https://boronology.github.io/documents/bestbuy_2025)
