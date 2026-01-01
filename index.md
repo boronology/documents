@@ -31,16 +31,19 @@
 [ブルートフォース防止に引っかかって締め出された場合](https://boronology.github.io/documents/nextcloud_cancel_bruteforce_detection)
 
 ## プログラミング
+
 [Entity Framework Coreでの多対多の扱い方について](https://boronology.github.io/documents/efcore_many_to_many)
 
 [Entity Framework Coreでの追跡と関連データの読み込みについて](https://boronology.github.io/documents/efcore_tracking)
 
 ## PC
+
 [2022年1月デスクトップPC更新](https://boronology.github.io/documents/desktop_pc_2022_1)
 
 [2024年8月デスクトップPC更新](https://boronology.github.io/documents/desktop_pc_2024_8)
 
 ## 日記
+
 [2023年まとめ](https://boronology.github.io/documents/diary_20231231)
 
 [2024年ベストバイ](https://boronology.github.io/documents/bestbuy_2024)

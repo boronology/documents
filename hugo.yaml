@@ -1,0 +1,25 @@
+baseURL: https://example.org/
+languageCode: 'ja-JP'
+title: 'ペンギン水槽'
+theme: 'hextra'
+
+enableRobotsTXT: true
+enableEmoji: true
+hasCJKLanguage: true
+
+menu:
+  main:
+    - name: Document
+      identifier: documents
+      pageref: /docs
+      weight: 1
+    - name: Blog
+      identifier: blog
+      pageref:  /blog
+      weight: 2
+
+
+params:
+  page:
+    # ページ幅を最大まで広げる
+    width: full

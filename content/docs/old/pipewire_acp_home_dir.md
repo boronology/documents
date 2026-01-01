@@ -1,4 +1,10 @@
++++
+draft = false
+title = 'Pipewire環境でalsa-card-profileをホームディレクトリに置く'
++++
+
 # Pipewire環境でalsa-card-profileをホームディレクトリに置く
+
 BluetoothヘッドホンでLDACを使うために[pulseaudio-modules-bt](https://aur.archlinux.org/packages/pulseaudio-modules-bt/)を使っていたが、[開発終了がアナウンスされた](https://github.com/EHfive/pulseaudio-modules-bt/issues/154)ためPipewireに乗り換えることにした。移ってみるとネイティブでLDACをサポートしているし使い勝手もよい。
 
 だが、スピーカーは大音量で鳴る。
@@ -6,9 +12,13 @@ BluetoothヘッドホンでLDACを使うために[pulseaudio-modules-bt](https:/
 そういうわけで音量に制限をかける方法をまとめる。
 
 ## alsa-card-profileを編集する
+
 PipewireもPulseaudioと同様にalsa-card-profileを読み込む。なのでこのファイルで`volume-limit`を設定すればPulseaudio同様に音量にリミットがかけられる。
 
-ファイルのありかはPulseaudioとは変わって */usr/share/alsa-card-profile/mixer/paths* となる（もともとはPulseaudioが使っていたパスだが）。前回同様に *analog-output.conf.common* を編集する。
+ファイルのありかはPulseaudioとは変わって
+_/usr/share/alsa-card-profile/mixer/paths_
+となる（もともとはPulseaudioが使っていたパスだが）。前回同様に
+_analog-output.conf.common_ を編集する。
 
 ```
 [Element PCM]
@@ -21,19 +31,21 @@ override-map.2 = all-left,all-right
 
 終わったらPipewireを再起動する。
 
-
 ## ホームディレクトリにalsa-card-profileを置く
-上記の方法では */usr* 以下のファイルを編集するため、当然ながら以下のような問題がある。
 
-* 管理者でないと変更できない
-* 全ユーザーに反映される
-* パッケージが更新されるたびに手動で直す必要がある
+上記の方法では _/usr_
+以下のファイルを編集するため、当然ながら以下のような問題がある。
+
+- 管理者でないと変更できない
+- 全ユーザーに反映される
+- パッケージが更新されるたびに手動で直す必要がある
 
 結論から述べると、Pipewireも[Pulseaudioと同様](https://boronology.github.io/documents/pulseaudio_config_in_home)にホームディレクトリ（正しくは任意のディレクトリ）からalsa-card-profileを読み込める。必要な手続きは以下のとおり。
 
 1. ホームディレクトリにalsa-card-profileをコピーする
 2. alsa-card-profileを編集する
-3. `ACP_PATHS_DIR`環境変数で読み込み先（ */usr/share/alsa-card-profile/mixer/paths* に相当するパス）を指定する
+3. `ACP_PATHS_DIR`環境変数で読み込み先（
+   _/usr/share/alsa-card-profile/mixer/paths_ に相当するパス）を指定する
 
 これだけ。
 
@@ -49,11 +61,12 @@ $ echo "export ACP_PATHS_DIR=~/.config/pipewire/alsa-card-profile/mixer/paths" >
 
 ログインしなおせば環境変数のセットとpipewireの再起動が行われる。
 
-
 ## 調査
+
 環境変数`ACP_PATHS_DIR`はドキュメント化されていない。見つけた方法をまとめておく。
 
-最初はそもそもpipewireが`volume-limit`を解釈できるのかという疑問からはじまった。pipewireのソースで **volume-limit** をgrepしてみる。
+最初はそもそもpipewireが`volume-limit`を解釈できるのかという疑問からはじまった。pipewireのソースで
+**volume-limit** をgrepしてみる。
 
 ```c
 static int element_parse_volume_limit(pa_config_parser_state *state) {
@@ -137,8 +150,8 @@ pa_alsa_path* pa_alsa_path_new(const char *paths_dir, const char *fname, pa_alsa
 こんなのがみつかる。はあはあ、設定項目名に対して関数のポインタをテーブルにしているらしい。引数に`paths_dir`なんてのがあるからここから読むのだろう。続きを見るとこうなっている。
 
 ```c
-    if (!paths_dir)
-        paths_dir = get_default_paths_dir();
+if (!paths_dir)
+    paths_dir = get_default_paths_dir();
 ```
 
 `get_default_paths_dir()`はこう。
@@ -159,11 +172,14 @@ static const char *get_default_paths_dir(void) {
 }
 ```
 
-なるほど。 **ACP_BUILD_DIR** 環境変数がなくて **ACP_PATHS_DIR** 環境変数があれば **ACP_PATHS_DIR** に指定したパスから読んでくれるということか。なければ `PA_ALSA_PATHS_DIR` マクロの指す値だ。
+なるほど。 **ACP_BUILD_DIR** 環境変数がなくて **ACP_PATHS_DIR** 環境変数があれば
+**ACP_PATHS_DIR** に指定したパスから読んでくれるということか。なければ
+`PA_ALSA_PATHS_DIR` マクロの指す値だ。
 
 念のため。本当に`pa_alsa_path_new()`の引数`paths_dir`には`NULL`が渡されているのか？呼び出しをたどってみる。
 
-`mapping_paths_probe()` -> `pa_alsa_path_set_new()` -> `pa_alsa_path_new()`となっていて、`mapping_paths_probe()`の処理はこう。
+`mapping_paths_probe()` -> `pa_alsa_path_set_new()` ->
+`pa_alsa_path_new()`となっていて、`mapping_paths_probe()`の処理はこう。
 
 ```c
 static void mapping_paths_probe(pa_alsa_mapping *m, pa_alsa_profile *profile,
