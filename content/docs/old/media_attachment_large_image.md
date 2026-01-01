@@ -9,8 +9,7 @@ title = 'mastodonで大きな画像を添付するとリサイズ結果が真っ
 
 私のmastodonサーバーの利用者から、特定の画像の添付に失敗し、以下のような真っ黒な画像になってしまうという報告を受けたため調査をおこなった。
 
-<img src="./img/media_attachment_black.png"
-     alt="アップロードはできるが画像が真っ黒になる" />
+![アップロードはできるが画像が真っ黒になる](./img/media_attachment_black.png)
 
 なおこの時点でのmastdonのバージョンはv3.2.0、Dockerで運用している。
 
@@ -249,13 +248,11 @@ _modules/libpref/init/StaticPrefList.yaml_ にある
 コード中でなくyamlにあること、およびこの`name`になにか見覚えがあったのでFirefoxで
 _about:config_ を開いてみる。
 
-<img src="./img/about_config.png"
-     alt="about:configにあった"/>
+![about:configにあった](./img/about_config.png)
 
 これをとりあえず最大値の`2147483647`にしてみると
 
-<img src="./img/media_attachment_success.png"
-     alt="正しくリサイズされた" />
+![正しくリサイズされた](./img/media_attachment_success.png)
 
 これにて一件落着。
 
