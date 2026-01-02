@@ -44,12 +44,14 @@
 
 ## 日記
 
-[2023年まとめ](https://boronology.github.io/documents/diary_20231231)
+[2023年まとめ](https://boronology.github.io/documents/content/blog/20231231_diary.md)
 
-[2024年ベストバイ](https://boronology.github.io/documents/bestbuy_2024)
+[2024年ベストバイ](https://boronology.github.io/documents/content/blog/20241230_bestbuy.md)
 
-[2024年まとめ](https://boronology.github.io/documents/diary_20241230)
+[2024年まとめ](https://boronology.github.io/documents/content/blog/20241230_diary.md)
 
-[2025年ベストバイ](https://boronology.github.io/documents/bestbuy_2025)
+[2025年ベストバイ](https://boronology.github.io/documents/content/blog/20251228_bestbuy.md)
 
-[2025年まとめ](https://boronology.github.io/documents/diary_20251228)
+[2025年まとめ](https://boronology.github.io/documents/content/blog/20251228_diary.md)
+
+[サイトをGitHubから脱出させた](https://boronology.github.io/documents/content/blog/20260101_new_site.md)
