@@ -2,6 +2,7 @@ baseURL: https://example.org/
 languageCode: 'ja-JP'
 title: 'ペンギン水槽'
 theme: 'hextra'
+defaultContentLanguage: ja
 
 enableRobotsTXT: true
 enableEmoji: true
@@ -18,8 +19,7 @@ menu:
       pageref:  /blog
       weight: 2
 
-
 params:
   page:
-    
     width: wide
+  externalLinkDecoration: true
