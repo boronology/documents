@@ -1,7 +1,7 @@
 baseURL: https://www.penguinability.net/
-languageCode: 'ja-JP'
-title: 'ペンギン水槽'
-theme: 'hextra'
+languageCode: "ja-JP"
+title: "ペンギン水槽"
+theme: "hextra"
 defaultContentLanguage: ja
 
 enableRobotsTXT: true
@@ -16,7 +16,7 @@ menu:
       weight: 1
     - name: Blog
       identifier: blog
-      pageref:  /blog
+      pageref: /blog
       weight: 2
 
 params:
