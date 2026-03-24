@@ -7,6 +7,18 @@ defaultContentLanguage: ja
 enableRobotsTXT: true
 enableEmoji: true
 hasCJKLanguage: true
+enableGitInfo: true
+
+frontmatter:
+  date:
+    - date
+    - publishDate
+  lastmod:
+    - :git
+    - lastmod
+    - publishDate
+    - date
+    
 
 menu:
   main:
@@ -23,3 +35,6 @@ params:
   page:
     width: wide
   externalLinkDecoration: true
+  displayUpdatedDate: true
+  displayUpdatedAuthor: true
+  dateFormat: "2006-01-02 15:04:05+09:00"
