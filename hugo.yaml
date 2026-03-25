@@ -18,7 +18,10 @@ frontmatter:
     - lastmod
     - publishDate
     - date
-    
+
+taxonomies:
+  tag: tags
+#  category: categories
 
 menu:
   main:
@@ -32,6 +35,13 @@ menu:
       weight: 2
 
 params:
+  author:
+    name: boronology
+    email: boronology@
+  # rss:
+  #   sections:
+  #     - 'blog'
+  #     - 'docs'
   page:
     width: wide
   externalLinkDecoration: true
