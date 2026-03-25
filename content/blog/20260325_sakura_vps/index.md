@@ -1,6 +1,6 @@
 +++
 date = '2026-03-25T08:08:28+09:00'
-draft = true
+draft = false
 title = 'さくらVPS収容機材の移行でCPUが変わった'
 +++
 
