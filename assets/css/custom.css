@@ -2,6 +2,6 @@
     margin-top: calc(var(--hx-spacing)*4)
 }
 
-img:not(.without-border) {
+img.with-border {
     border: solid 1px gray ;
 }

@@ -6,7 +6,7 @@ title = 'Readeckを使っている'
 
 ## 2週間
 
-先日 [Pocket代替（Webサイト保存）セルフホストアプリケーション](/docs/20260323_selfhost_pocket/) という記事を書いた。
+先日「[Pocket代替（Webサイト保存）セルフホストアプリケーション](/docs/20260323_selfhost_pocket/)」という記事を書いた。
 そのなかで気に入ったReadeckを使いはじめて2週間ほどが経ったので感想を書く。
 
 ### 軽い
@@ -36,6 +36,7 @@ Web側も軽快に操作でき、ページ遷移に待たされるようなこ�
 反面といってはなんだが誤操作はしやすい。特にスマートフォンで表示するとボタンが小さい。
 
 ![スマートフォンでのReadeck表示画面。ボタンが小さく押し間違いやすい](readeck_sp.png)
+{ class="with-border"  width="50%" }
 
 ### アクセシビリティ
 
@@ -51,7 +52,7 @@ Web側も軽快に操作でき、ページ遷移に待たされるようなこ�
 
 {{<rawhtml>}}
 <a href="https://translate.codeberg.org/engage/readeck/">
-<img src="https://translate.codeberg.org/widget/readeck/application/ja/svg-badge.svg" alt="翻訳状況" class="without-border" />
+<img src="https://translate.codeberg.org/widget/readeck/application/ja/svg-badge.svg" alt="翻訳状況" />
 </a>
 {{</rawhtml>}}
 

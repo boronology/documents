@@ -48,3 +48,11 @@ params:
   displayUpdatedDate: true
   displayUpdatedAuthor: true
   dateFormat: "2006-01-02 15:04:05+09:00"
+
+markup:
+  goldmark:
+    parser:
+      wrapStandAloneImageWithinParagraph: false
+      attribute:
+        block: true
+        title: true
