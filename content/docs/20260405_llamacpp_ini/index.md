@@ -10,11 +10,9 @@ title = 'ローカルllama.cppでは--models-presetを使え'
 
 llama-serverを起動したままモデルを切り替えたり、同時にロードしたり、必要なときだけロードして自動でアンロードしたりと大変便利なので活用すべきだ。
 
-使い方は以下。
+あわせて使うと便利なのは `--no-models-autoload` と `--sleep-idle-seconds` の2つ。
+以下で詳しく説明していく。
 
-```sh
-llama-server --models-preset my_model_preset.ini --no-models-autoload --sleep-idle-seconds 600
-```
 
 
 ### 意味
@@ -34,7 +32,8 @@ llama-server --models-preset my_model_preset.ini --no-models-autoload --sleep-id
 
 
 ```ini
-; 画面に表示するモデル名。スラッシュ区切りでグループ化できる
+; 画面に表示するモデル名。スラッシュ区切りでグループ化できる。
+; llama-serverの起動引数での `--alias` に相当する。
 [group/model_name]
 model = /path/to/model.gguf
 mmproj = /path/to/mmproj.gguf
@@ -61,9 +60,13 @@ llama-server -m gemma-4-31B-it-Q4_K_M.gguf --mmproj gemma-4-31B-it-mmproj-BF16.g
 iniにすると、こうなる。
 
 ```ini
+; [*]のセクションに全モデルでの共通を書く
 [*]
 dev = ROCm0,ROCm1
 jinja = true
+; `--sleep-idle-seconds` に相当。
+; どのモデルも自動でアンロードさせたいならここに書く。
+sleep-idle-seconds = 600
 
 [Qwen/Qwen3-Coder-Next]
 model = /path/to/models/Qwen3-Coder-Next-Q4_K_M.gguf
@@ -100,7 +103,7 @@ top-k = 64
             "tags": [],
             "object": "model",
             "owned_by": "llamacpp",
-            "created": 1775364024,
+            "created": 1775565537,
             "status": {
                 "value": "unloaded",
                 "args": [
@@ -138,7 +141,7 @@ top-k = 64
             "tags": [],
             "object": "model",
             "owned_by": "llamacpp",
-            "created": 1775364024,
+            "created": 1775565537,
             "status": {
                 "value": "unloaded",
                 "args": [
@@ -174,16 +177,16 @@ top-k = 64
             "tags": [],
             "object": "model",
             "owned_by": "llamacpp",
-            "created": 1775364024,
+            "created": 1775565537,
             "status": {
-                "value": "loaded",
+                "value": "unloaded",
                 "args": [
                     "/usr/bin/llama-server",
                     "--host",
                     "127.0.0.1",
                     "--jinja",
                     "--port",
-                    "42331",
+                    "0",
                     "--alias",
                     "unsloth/Qwen3-VL-8B-Instruct-GGUF:Q4_K_XL",
                     "--device",
@@ -213,3 +216,9 @@ chat-template-kwargs = '{"reasoning_effort":"none"}'
 ; reasoning
 ; chat-template-kwargs = '{"reasoning_effort":"high"}'
 ```
+
+## 追記
+
+当初の記事では `--sleep-idle-seconds` をllama-serverの起動引数に渡すと書いていました。
+実際にはアンロードの判定は各モデルのサーバーが行うため、モデルごとの引数の一部として渡さないと意味がありません。
+現在の記事では `.ini` ファイルの `[*]` セクションに書くよう修正しています。
