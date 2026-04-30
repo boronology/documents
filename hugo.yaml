@@ -1,5 +1,4 @@
 baseURL: https://www.penguinability.net/
-languageCode: "ja-JP"
 title: "ペンギン水槽"
 theme: "hextra"
 defaultContentLanguage: ja
@@ -8,6 +7,11 @@ enableRobotsTXT: true
 enableEmoji: true
 hasCJKLanguage: true
 enableGitInfo: true
+
+languages:
+  ja:
+    label: "日本語"
+    locale: "ja-JP"
 
 frontmatter:
   date:
@@ -48,6 +52,11 @@ params:
   displayUpdatedDate: true
   displayUpdatedAuthor: true
   dateFormat: "2006-01-02 15:04:05+09:00"
+  search:
+    flexsearch:
+      js: "js/flexsearch.js"
+  mermaid:
+    js: "js/mermaid.esm.min.mjs"
 
 markup:
   goldmark:
