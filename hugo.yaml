@@ -29,14 +29,18 @@ taxonomies:
 
 menu:
   main:
+    - name: Search
+      weight: 1
+      params:
+        type: search
     - name: Document
       identifier: documents
-      pageref: /docs
-      weight: 1
+      pageRef: /docs
+      weight: 4
     - name: Blog
       identifier: blog
-      pageref: /blog
-      weight: 2
+      pageRef: /blog
+      weight: 5
 
 params:
   author:
@@ -53,8 +57,12 @@ params:
   displayUpdatedAuthor: true
   dateFormat: "2006-01-02 15:04:05+09:00"
   search:
+    type: flexsearch
+    enabled: true
     flexsearch:
-      js: "js/flexsearch.js"
+      js: "js/flexsearch.bundle.min.js"
+      tokenize: backward
+      index: content
   mermaid:
     js: "js/mermaid.js"
 
