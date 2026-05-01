@@ -56,7 +56,7 @@ params:
     flexsearch:
       js: "js/flexsearch.js"
   mermaid:
-    js: "js/mermaid.esm.min.mjs"
+    js: "js/mermaid.js"
 
 markup:
   goldmark:
