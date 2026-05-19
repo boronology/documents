@@ -30,4 +30,6 @@ boronologyの個人サイトです。
   {{< card link="https://social.penguinability.net/@boronology" title="mastodon - boronology（セルフホスト）" >}}
 
   {{< card link="https://github.com/boronology" title="GitHub - boronology" >}}
+
+  {{< card link="https://translate.codeberg.org/user/boronology/" title="Codeberg Translate" >}}
 {{< /cards >}}
