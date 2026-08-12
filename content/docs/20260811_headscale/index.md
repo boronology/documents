@@ -1,6 +1,6 @@
 +++
 date = '2026-08-11T15:58:10+09:00'
-draft = true
+draft = false
 title = 'headscaleを導入する'
 +++
 
